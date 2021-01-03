@@ -8,7 +8,7 @@
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" <?php Util::activePage("index.php") ?>>
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="index.php">Főoldal</a>
       </li>
 
 
@@ -33,16 +33,23 @@
           <a class="dropdown-item" href="#">Letöltés</a>
         </div>
       </li>
-    
-    <?php else: ?>
-
-        <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Bejelentkezés</a>
-        </li>
 
     <?php endif; ?>
     
 </ul>
+
+    <ul class="navbar-nav ml-auto">
+        <?php if(User::loggedin()): ?>
+        <li class="nav-item">
+            <a class="nav-link" href="logout.php">Kijelentkezés</a>
+        </li>
+        <?php else: ?>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Bejelentkezés</a>
+        </li>
+        <?php endif; ?>
+    </ul>
+
 
   </div>
 </nav>
@@ -51,7 +58,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="loginModalLabel">Bejelentkezés</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -61,7 +68,7 @@
       <div class="modal-body">
       <div class="form-group">
     <label for="passwordInput">Jelszó</label>
-    <input type="password" placeholder="******" class="form-control" id="passwordInput">
+    <input type="password" name="password" placeholder="******" class="form-control" id="passwordInput">
   </div>
       </div>
       <div class="modal-footer">

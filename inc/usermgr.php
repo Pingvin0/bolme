@@ -2,12 +2,12 @@
 
 
 class User {
-    private $passwords = [
+    private static $passwords = [
         '$2y$10$tAaTupsmRU8dEmo51i0.8OM1Bso5xEau88WdwYBvHnZ/8YC6/VoA2'
     ];
 
     public static function authenticate($password) {
-        foreach(User::passwords as $pw) {
+        foreach(User::$passwords as $pw) {
             if(password_verify($password, $pw)) {
                 return true;
             }
